@@ -62,7 +62,7 @@ namespace RaceTimesApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=UserTimes}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

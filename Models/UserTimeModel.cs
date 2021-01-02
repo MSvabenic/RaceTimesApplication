@@ -17,9 +17,11 @@ namespace RaceTimesApplication.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
         public double Time { get; set; }
 
         public bool IsApproved { get; set; }
