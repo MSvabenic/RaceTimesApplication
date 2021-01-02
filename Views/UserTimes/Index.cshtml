@@ -42,7 +42,7 @@
                 @if (@User.Identity.IsAuthenticated && @User.IsInRole("Administrator"))
                 {
                     <td>
-                        @Html.ActionLink("Reject", "Delete", new { id = item.Id }, new { @class = "deleteItem" })
+                        @Html.ActionLink("Delete", "Delete", "AdminUserTimes", new { id = item.Id }, new { @class = "deleteItem" })
                     </td>
                 }
             </tr>

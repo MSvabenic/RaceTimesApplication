@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+    var token = $('[name="__RequestVerificationToken"]').val();
     $("#dialog").dialog({
         autoOpen: false,
         modal: true,
@@ -12,7 +13,7 @@ $(document).ready(function () {
                 var approveUrl = $("#dialog").data('approveUrl');
                 var postUrl = deleteUrl != undefined ? deleteUrl : approveUrl;
 
-                $.post(postUrl)
+                $.post(postUrl, { __RequestVerificationToken: token})
                     .done(function () {
                         setTimeout(window.location.reload.bind(window.location), 300);
                     })

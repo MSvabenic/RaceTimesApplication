@@ -21,7 +21,6 @@ namespace RaceTimesApplication.Controllers
             _context = context;
         }
 
-        // GET: AdminUserTimes
         public async Task<IActionResult> Index()
         {
             var dataToReturn = _context.UserTimes
@@ -33,7 +32,7 @@ namespace RaceTimesApplication.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid id)
         {
             var userTimeModel = await _context.UserTimes.FindAsync(id);
@@ -43,6 +42,7 @@ namespace RaceTimesApplication.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(Guid id)
         {
             var userTimeModel = await _context.UserTimes.FindAsync(id);
