@@ -7,6 +7,10 @@
 <p>
     <a asp-action="Create">Add new</a>
 </p>
+
+<div id="dialog">
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,18 +27,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>            
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                @if (@User.Identity.IsAuthenticated && @User.IsInRole("Administrator"))
+                {
+                    <td>
+                        @Html.ActionLink("Reject", "Delete", new { id = item.Id }, new { @class = "deleteItem" })
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>

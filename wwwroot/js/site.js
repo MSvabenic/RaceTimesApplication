@@ -17,7 +17,7 @@ $(document).ready(function () {
                         setTimeout(window.location.reload.bind(window.location), 300);
                     })
                     .fail(function () {
-                        alert("error");
+                        alert("Error has occured. Please try again!");
                     })
             },
             Cancel: function () {
