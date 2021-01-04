@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RaceTimesApplication.Models;
+using System;
 
 namespace RaceTimesApplication.Data
 {
@@ -15,5 +13,12 @@ namespace RaceTimesApplication.Data
         }
 
         public DbSet<UserTimeModel> UserTimes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserTimeModel>().Property(p => p.CreationTime).HasDefaultValueSql("CURRENT_TIMESTAMP").ValueGeneratedOnAdd();
+        }
     }
 }

@@ -11,8 +11,8 @@
 <div id="dialog">
 </div>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -23,7 +23,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Time)
             </th>
-            <th></th>
+            @if (@User.Identity.IsAuthenticated && @User.IsInRole("Administrator"))
+            {
+                <th>
+                    Actions
+                </th>
+            }
         </tr>
     </thead>
     <tbody>

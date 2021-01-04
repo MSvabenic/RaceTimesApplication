@@ -12,6 +12,7 @@ using RaceTimesApplication.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
 namespace RaceTimesApplication
 {
@@ -58,6 +59,11 @@ namespace RaceTimesApplication
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            var cultureInfo = new CultureInfo("en-US");
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseEndpoints(endpoints =>
             {

@@ -22,7 +22,11 @@ namespace RaceTimesApplication.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
-        public double Time { get; set; }
+        [Column(TypeName = "decimal(16,2)")]
+        public decimal Time { get; set; }
+
+
+        public DateTime CreationTime { get; set; }
 
         public bool IsApproved { get; set; }
     }
