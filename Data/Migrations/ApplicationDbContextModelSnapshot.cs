@@ -15,7 +15,7 @@ namespace RaceTimesApplication.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -44,6 +44,15 @@ namespace RaceTimesApplication.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "DDB8F0FD-B8A2-4582-B513-99605CA8B7F0",
+                            ConcurrencyStamp = "f9ac6ee1-b2f6-4c49-ac74-01b773df4a69",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -133,6 +142,24 @@ namespace RaceTimesApplication.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "F8BED3E7-1263-4705-B713-76965DE0EDFE",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7e34fdc3-859f-4ed5-a21f-7a9a83e9ff6c",
+                            Email = "AdminUser1@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMINUSER1@gmail.com",
+                            NormalizedUserName = "ADMINUSER1@gmail.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGDSOLirRyu14DSS/iUikHYZrBD7trWZrnh/OhH1NjmijAD6kaoZE04izq6194LDZw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "85344fa6-5661-4d6b-b147-cf699422d126",
+                            TwoFactorEnabled = false,
+                            UserName = "AdminUser1@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -196,6 +223,13 @@ namespace RaceTimesApplication.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "F8BED3E7-1263-4705-B713-76965DE0EDFE",
+                            RoleId = "DDB8F0FD-B8A2-4582-B513-99605CA8B7F0"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -225,6 +259,11 @@ namespace RaceTimesApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreationTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
@@ -236,8 +275,8 @@ namespace RaceTimesApplication.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Time")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Time")
+                        .HasColumnType("decimal(16,2)");
 
                     b.HasKey("Id");
 

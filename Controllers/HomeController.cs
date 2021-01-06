@@ -20,7 +20,12 @@ namespace RaceTimesApplication.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+            {
+                return RedirectToAction("Index", "AdminUserTimes");
+            }
+
+            return RedirectToAction("Index", "UserTimes");
         }
 
         public IActionResult Privacy()

@@ -17,10 +17,15 @@ namespace RaceTimesApplication.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
 
         [Required]
-        public double Time { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N}", ApplyFormatInEditMode = true)]
+        [Column(TypeName = "decimal(16,2)")]
+        public decimal Time { get; set; }
+
+        public DateTime CreationTime { get; set; }
 
         public bool IsApproved { get; set; }
     }
