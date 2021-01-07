@@ -25,7 +25,7 @@ namespace RaceTimesApplication.Controllers
         {
             var dataToReturn = _context.UserTimes
                 .Where(ut => !ut.IsApproved)
-                .OrderBy(ut => ut.CreationTime)
+                .OrderBy(ut => ut.Time)
                 .ToListAsync();
 
             return View(await dataToReturn);
