@@ -19,12 +19,12 @@ namespace RaceTimesApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var viewToReturn = _context.UserTimes
+            var dataToReturn = _context.UserTimes
                 .Where(ut => ut.IsApproved)
                 .OrderBy(ut => ut.Time)
                 .ToListAsync();
 
-            return View(await viewToReturn);
+            return View(await dataToReturn);
         }
 
         public IActionResult Create()
